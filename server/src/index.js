@@ -1,12 +1,15 @@
 import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    next();
-});
+//     next();
+// });
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.redirect('/temp');
