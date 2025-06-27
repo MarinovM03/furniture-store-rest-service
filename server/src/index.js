@@ -11,12 +11,12 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.redirect('/temp');
-});
+app.use(express.json());
 
-app.get('/temp', (req, res) => {
-    res.json({ temp: true });
+app.post('/users/register', (req, res) => {
+    console.log(req.body);
+    
+    res.end();
 });
 
 app.get('/data/catalog', (req, res) => {
