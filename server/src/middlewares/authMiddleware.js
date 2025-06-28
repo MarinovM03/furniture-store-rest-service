@@ -17,7 +17,5 @@ export const auth = (req, res, next) => {
         next();
     } catch (err) {
         res.status(401).end();
-    }
-    
-    next();
+    }    
 };
