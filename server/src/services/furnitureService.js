@@ -1,8 +1,8 @@
 import Furniture from "../models/Furniture.js"
 
 export default {
-    getAll() {
-        return Furniture.find();
+    getAll(filter = {}) {
+        return Furniture.find(filter);
     },
     getOne(furnitureId) {
         return Furniture.findById(furnitureId);

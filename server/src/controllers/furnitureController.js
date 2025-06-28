@@ -5,7 +5,12 @@ import furnitureService from "../services/furnitureService.js";
 const furnitureController = Router();
 
 furnitureController.get('/', async (req, res) => {
-    const furnitures = await furnitureService.getAll();
+    const filter = new URLSearchParams(req.query.where?.replaceAll('"', ''));
+
+    console.log(filter);
+    
+    
+    const furnitures = await furnitureService.getAll(Object.fromEntries(filter?.entries() ?? []));
 
     res.json(furnitures);
 });
