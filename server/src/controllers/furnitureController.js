@@ -58,6 +58,18 @@ furnitureController.put('/:furnitureId', async (req, res) => {
 
     const furnitureData = req.body;
 
+    const userId = req.user.id;
+
+    const furniture = await furnitureService.getOne(furnitureId);
+
+    if (!furniture) {
+        return res.status(404).json({ message: 'Not found' });
+    }
+
+    if (furniture._ownerId.toString() !== userId) {
+        return res.status(403).json({ message: 'Forbidden' });
+    }
+
     const updatedFurniture = await furnitureService.update(furnitureId, furnitureData);
 
     res.json(updatedFurniture);
