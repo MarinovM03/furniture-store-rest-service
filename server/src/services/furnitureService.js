@@ -12,5 +12,8 @@ export default {
     },
     delete(furnitureId) {
         return Furniture.findByIdAndDelete(furnitureId);
+    },
+    update(furnitureId, furnitureData) {
+        return Furniture.findByIdAndUpdate(furnitureId, furnitureData);
     }
 }
