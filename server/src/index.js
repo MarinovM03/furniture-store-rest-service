@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import routes from './routes.js';
+import { auth } from './middlewares/authMiddleware.js';
 
 mongoose.connect('mongodb://localhost:27017', { dbName: 'furniture-store' })
     .then(() => console.log('Successfully connected to DB!'))
@@ -19,6 +20,8 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+app.use(auth);
 
 app.use(routes);
 
